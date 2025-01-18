@@ -6,6 +6,7 @@ import 'package:wfp2/screens/my_qrcode_screen.dart';
 import 'package:wfp2/screens/nfc_session_screen.dart';
 import 'package:wfp2/widgets/button_widgets.dart';
 import 'package:get/get.dart';
+import 'package:wfp2/widgets/stampcard_widget.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -29,7 +30,9 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Container(
+      body: 
+      
+      Container(
         width: double.maxFinite,
         height: double.maxFinite,
         padding: const EdgeInsets.only(left: 20, right: 20),
@@ -37,6 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
           
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            NumberBoxWidget(count: 0),
             InkWell(
               onTap: () {
                 Get.to(()=> Myqrcodescreen(), transition: Transition.fade, duration: Duration(seconds: 1));
@@ -51,7 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
             SizedBox(height: 5,),
             InkWell(
               onTap: () {
-                Get.to(()=> NFCSessionWidget(), transition: Transition.fade, duration: Duration(seconds: 1));
+                Get.to(()=> NFCsessionscreen(), transition: Transition.fade, duration: Duration(seconds: 1));
               },
               child: ButtonWidget(
                 backgroundColor: Colors.black,

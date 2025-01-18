@@ -97,3 +97,5 @@ class NFCHandler {
     await FlutterNfcKit.finish(iosAlertMessage: "Success");
   }
 }
+
+

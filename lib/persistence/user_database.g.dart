@@ -85,7 +85,7 @@ class _$UserDatabase extends UserDatabase {
       },
       onCreate: (database, version) async {
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `UserEntity` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `position` TEXT NOT NULL, `company` TEXT NOT NULL)');
+            'CREATE TABLE IF NOT EXISTS `UserEntity` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `username` TEXT NOT NULL, `password` TEXT NOT NULL)');
 
         await callback?.onCreate?.call(database, version);
       },
