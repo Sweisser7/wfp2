@@ -41,6 +41,7 @@ dependencies:
   http: ^1.2.2
   flutter_nfc_kit: ^3.5.2
   ndef: ^0.3.4
+  floor: ^1.5.0
 
 
 dev_dependencies:

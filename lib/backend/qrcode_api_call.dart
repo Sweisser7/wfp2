@@ -14,9 +14,7 @@ class QrCodeApiClient {
       final uri = Uri.parse(apiUrl).replace(queryParameters: {
         'data': data,
         'size': '${size}x$size',
-        
       });
-      print(data);
 
       // Send a GET request to the API
       final response = await http.get(uri);
