@@ -1,6 +1,8 @@
 
+import 'package:flutter/material.dart';
+
 class StampCard {
-  int _stamps = 0; // Private Variable für die Anzahl der Stempel
+  int _stamps = 1; // Private Variable für die Anzahl der Stempel
 
   // Funktion, um den aktuellen Stempelwert zurückzugeben
   int get stamps => _stamps;
@@ -8,16 +10,16 @@ class StampCard {
   // Funktion, um Stempel hinzuzufügen
   void addStamp() {
     _stamps++;
-    print('Ein Stempel wurde hinzugefügt. Aktuelle Anzahl: $_stamps');
+    debugPrint('Ein Stempel wurde hinzugefügt. Aktuelle Anzahl: $_stamps');
   }
 
   // Beispiel-Funktion, die bei Erfolg einen Stempel hinzufügt
   void performTask(String message) {
     if (message != "NFC session completed successfully!") {
-      print('Aufgabe erfolgreich abgeschlossen!');
+      debugPrint('Aufgabe erfolgreich abgeschlossen!');
       addStamp();
     } else {
-      print('Aufgabe fehlgeschlagen. Kein Stempel hinzugefügt.');
+      debugPrint('Aufgabe fehlgeschlagen. Kein Stempel hinzugefügt.');
     }
   }
 

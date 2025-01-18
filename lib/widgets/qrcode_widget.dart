@@ -57,8 +57,9 @@ class _QrCodeWidgetState extends State<QrCodeWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('QR Code Viewer')),
-      body: Center(
+      appBar: AppBar(title: const Text('My QR-Code')),
+      body: Container(
+        padding: const EdgeInsets.only(left: 20, right: 20),
         child: isLoading
             ? const CircularProgressIndicator()
             : qrCodeBytes != null
