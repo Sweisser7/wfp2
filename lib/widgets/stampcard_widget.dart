@@ -4,7 +4,7 @@ import 'package:wfp2/backend/stampcard.dart';
 class NumberBoxWidget extends StatelessWidget {
   final int count; // Integer-Wert, der die Anzahl anzeigt
 
-  const NumberBoxWidget({Key? key, required this.count}) : super(key: key);
+  const NumberBoxWidget({super.key, required this.count});
 
   @override
   Widget build(BuildContext context) {

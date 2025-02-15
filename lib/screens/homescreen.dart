@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 //import 'package:wfp2/backend/qrcode_generator.dart';
 import 'package:wfp2/screens/my_qrcode_screen.dart';
+import 'package:wfp2/screens/nfc_readwrite_screen.dart';
 import 'package:wfp2/screens/nfc_session_screen.dart';
 import 'package:wfp2/widgets/button_widgets.dart';
 import 'package:get/get.dart';
@@ -55,7 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
             SizedBox(height: 5,),
             InkWell(
               onTap: () {
-                Get.to(()=> NFCsessionscreen(), transition: Transition.fade, duration: Duration(seconds: 1));
+                Get.to(()=> ReadWriteNFCScreen(), transition: Transition.fade, duration: Duration(seconds: 1));
               },
               child: ButtonWidget(
                 backgroundColor: Colors.black,

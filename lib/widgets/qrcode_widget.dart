@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:wfp2/backend/qrcode_api_call.dart';
 
 class QrCodeWidget extends StatefulWidget {
-  const QrCodeWidget({Key? key}) : super(key: key);
+  const QrCodeWidget({super.key});
 
   @override
   _QrCodeWidgetState createState() => _QrCodeWidgetState();

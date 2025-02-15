@@ -6,10 +6,10 @@ class ButtonWidget extends StatelessWidget {
   final String text;
   final Color textColor;
 
-  const ButtonWidget({Key? key,
+  const ButtonWidget({super.key,
   required this.backgroundColor,
   required this.text,
-  required this.textColor}) : super(key:key);
+  required this.textColor});
 
   @override
   Widget build(BuildContext context) {
