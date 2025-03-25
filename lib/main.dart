@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:wfp2/screens/homescreen.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ProviderScope(
+      child: MyApp(),
+    )
+  );
 }
+
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -23,4 +30,27 @@ class MyApp extends StatelessWidget {
   }
 }
 
+@immutable
+class Task {
+  final int id;
+  final String label;
+ 
+
+  Task({required this.id, required this.label});
+
+  Task copyWith({int? id, String? label, bool? completed}) {
+    return Task(
+        id: id ?? this.id,
+        label: label ?? this.label
+        );
+  }
+}
+
+class TaskNotifier extends StateNotifier<List<Task>> {
+  TaskNotifier({tasks}) : super(tasks);
+
+  void add(Task task) {
+    state = [...state, task];
+  }
+}
 

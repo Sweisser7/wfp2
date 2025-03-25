@@ -1,13 +1,15 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:wfp2/backend/stampcard.dart';
 //import 'package:wfp2/backend/qrcode_generator.dart';
 import 'package:wfp2/screens/my_qrcode_screen.dart';
 import 'package:wfp2/screens/nfc_readwrite_screen.dart';
-import 'package:wfp2/screens/nfc_session_screen.dart';
+import 'package:wfp2/screens/stampcardscreen.dart';
 import 'package:wfp2/widgets/button_widgets.dart';
 import 'package:get/get.dart';
-import 'package:wfp2/widgets/stampcard_widget.dart';
+
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -18,6 +20,8 @@ class MyHomePage extends StatefulWidget {
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
+
+
 }
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -25,6 +29,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    //final StampCard stampcard = StampCard();
     
     
     return Scaffold(
@@ -41,9 +46,20 @@ class _MyHomePageState extends State<MyHomePage> {
           
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            NumberBoxWidget(count: 0),
             InkWell(
               onTap: () {
+                
+                Get.to(()=> MyStampCardScreen(), transition: Transition.fade, duration: Duration(seconds: 1));
+              },
+              child: ButtonWidget(
+                backgroundColor: Colors.black,
+                text: "My Stampcard",
+                textColor: Colors.white
+                )),
+            SizedBox(height: 5,),
+            InkWell(
+              onTap: () {
+                
                 Get.to(()=> Myqrcodescreen(), transition: Transition.fade, duration: Duration(seconds: 1));
               },
               child: ButtonWidget(

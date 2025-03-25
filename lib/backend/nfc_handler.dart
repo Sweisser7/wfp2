@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/material.dart';
 import 'package:flutter_nfc_kit/flutter_nfc_kit.dart';
 import 'package:ndef/ndef.dart' as ndef;
 
@@ -25,7 +26,7 @@ class NFCHandler {
 
       if (tag.type == NFCTagType.iso7816) {
         var result = await FlutterNfcKit.transceive("00B0950000");
-        print("Transceive result: $result");
+        debugPrint("Transceive result: $result");
       }
 
       await FlutterNfcKit.setIosAlertMessage("hi there!");
@@ -35,7 +36,7 @@ class NFCHandler {
       await _blockLevelReadWrite(tag);
 
     } catch (e) {
-      print("Error during NFC polling: $e");
+      debugPrint("Error during NFC polling: $e");
     } finally {
       await _finish();
     }
@@ -46,12 +47,12 @@ class NFCHandler {
     if (tag.ndefAvailable != null) {
       var ndefRecords = await FlutterNfcKit.readNDEFRecords(cached: false);
       for (var record in ndefRecords) {
-        print("NDEF Record: ${record.toString()}");
+        debugPrint("NDEF Record: ${record.toString()}");
       }
 
       var rawRecords = await FlutterNfcKit.readNDEFRawRecords(cached: false);
       for (var record in rawRecords) {
-        print("Raw NDEF Record: ${jsonEncode(record)}");
+        debugPrint("Raw NDEF Record: ${jsonEncode(record)}");
       }
     }
   }
@@ -85,10 +86,10 @@ class NFCHandler {
     } else if (tag.type == NFCTagType.mifare_classic) {
       await FlutterNfcKit.authenticateSector(0, keyA: "FFFFFFFFFFFF");
       var sectorData = await FlutterNfcKit.readSector(0);
-      print("Sector data: $sectorData");
+      debugPrint("Sector data: $sectorData");
 
       var blockData = await FlutterNfcKit.readBlock(0);
-      print("Block data: $blockData");
+      debugPrint("Block data: $blockData");
     }
   }
 

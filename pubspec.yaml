@@ -45,6 +45,7 @@ dependencies:
   floor: ^1.5.0
   nfc_manager: ^3.5.0
   provider: any
+  flutter_riverpod: ^2.6.1
 
   
 

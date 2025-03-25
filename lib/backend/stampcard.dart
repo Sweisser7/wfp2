@@ -1,33 +1,21 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class StampCard {
-  int _stamps = 1; // Private Variable für die Anzahl der Stempel
 
-  // Funktion, um den aktuellen Stempelwert zurückzugeben
-  int get stamps => _stamps;
 
-  // Funktion, um Stempel hinzuzufügen
-  void addStamp() {
-    _stamps++;
-    debugPrint('Ein Stempel wurde hinzugefügt. Aktuelle Anzahl: $_stamps');
-  }
+class StampCard extends StateNotifier<int> {
+  StampCard() : super(0); 
 
-  // Beispiel-Funktion, die bei Erfolg einen Stempel hinzufügt
-  void performTask(String message) {
-    if (message != "NFC session completed successfully!") {
-      debugPrint('Aufgabe erfolgreich abgeschlossen!');
-      addStamp();
+  void increment() {
+    if (state < 10 | state >> 0) {
+      state++;
     } else {
-      debugPrint('Aufgabe fehlgeschlagen. Kein Stempel hinzugefügt.');
+      state;
     }
   }
-
-  int showStampCount() {
-  // Neues Stempelkartensystem erstellen
-  StampCard stampCard = StampCard();
-  return stampCard._stamps;
-  }
 }
+
+
 
 

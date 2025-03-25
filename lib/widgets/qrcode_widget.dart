@@ -7,65 +7,37 @@ import 'package:wfp2/backend/qrcode_api_call.dart';
 class QrCodeWidget extends StatefulWidget {
   const QrCodeWidget({super.key});
 
+  
+
   @override
   _QrCodeWidgetState createState() => _QrCodeWidgetState();
 }
 
 class _QrCodeWidgetState extends State<QrCodeWidget> {
-  late QrCodeApiClient qrCodeApiClient;
-  Uint8List? qrCodeBytes;
+  
   bool isLoading = false;
+  var qrCodeApiClient = QrCodeApiClient(apiUrl: 'https://api.qrserver.com/v1/create-qr-code/?');
 
-  String generateRandomString(int length) {
-    const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    final random = Random();
-    
-    return List.generate(length, (index) => chars[random.nextInt(chars.length)]).join();
-  }
+  
 
   @override
-  void initState() {
-    super.initState();
-
-    
-    qrCodeApiClient = QrCodeApiClient(apiUrl: 'https://api.qrserver.com/v1/create-qr-code/?');
-    _fetchQrCode();
-  }
-
-  Future<void> _fetchQrCode() async {
-    setState(() {
-      isLoading = true;
-    });
-
-    try {
-      final randomString = generateRandomString(40);
-      final bytes = await qrCodeApiClient.fetchQrCode(randomString);
-      setState(() {
-        qrCodeBytes = bytes;
-      });
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text('Error: $e'),
-      ));
-    } finally {
-      setState(() {
-        isLoading = false;
-      });
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('My QR-Code')),
-      body: Container(
-        padding: const EdgeInsets.only(left: 20, right: 20),
-        child: isLoading
-            ? const CircularProgressIndicator()
-            : qrCodeBytes != null
-                ? Image.memory(qrCodeBytes!)
-                : const Text('Failed to load QR code'),
-      ),
-    );
-  }
+Widget build(BuildContext context) {
+  return Scaffold(
+    appBar: AppBar(title: const Text('My QR-Code')),
+    body: FutureBuilder<Uint8List?>(
+      future: qrCodeApiClient.fetchByteStream(), // Async abrufen
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(child: CircularProgressIndicator()); // Ladeanzeige
+        } else if (snapshot.hasError || snapshot.data == null) {
+          debugPrint("$snapshot");
+          return const Center(child: Text('Failed to load QR code'));
+        } else {
+          return Center(child: Image.memory(snapshot.data!)); // QR-Code anzeigen
+        }
+      },
+    ),
+  );
 }
+}
+ 

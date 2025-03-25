@@ -6,7 +6,7 @@ import 'package:wfp2/backend/stampcard.dart';
 class NfcSession {
 
   final NFCHandler _nfcHandler = NFCHandler();
-  final StampCard stampCard = StampCard();
+  
   String _message = "Ready to scan NFC tags.";
 
     Future<String> startNfcSession() async {
@@ -20,11 +20,11 @@ class NfcSession {
         _message = "Scanning for NFC tags...";
       await _nfcHandler.pollNfc();
         _message = "NFC session completed successfully!";
-        stampCard.performTask(_message);
+        //stampCard.performTask(_message);
         return _message;
     } catch (e) {
         _message = "Error";
-        stampCard.performTask(_message);
+        //stampCard.performTask(_message);
         return _message ;
     }
   }

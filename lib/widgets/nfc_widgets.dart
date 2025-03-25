@@ -73,7 +73,7 @@ class NFCSessionWidget extends StatefulWidget {
 
 class _NFCSessionWidgetState extends State<NFCSessionWidget> {
   final NFCHandler _nfcHandler = NFCHandler();
-  final StampCard stampCard = StampCard();
+  
   String _message = "Ready to scan NFC tags.";
 
   /// Start NFC session
@@ -95,12 +95,12 @@ class _NFCSessionWidgetState extends State<NFCSessionWidget> {
 
       setState(() {
         _message = "NFC session completed successfully!";
-        stampCard.performTask(_message);
+        //stampCard.performTask(_message);
       });
     } catch (e) {
       setState(() {
         _message = "Error: $e";
-        stampCard.performTask(_message);
+        //stampCard.performTask(_message);
       });
     }
   }

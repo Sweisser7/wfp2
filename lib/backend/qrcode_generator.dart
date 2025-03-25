@@ -1,6 +1,7 @@
 //import 'dart:io';
 import 'dart:math';
 import 'dart:typed_data';
+import 'package:flutter/material.dart';
 import 'package:image/image.dart' as img;
 import 'package:qr/qr.dart';
 //import 'package:path_provider/path_provider.dart';
@@ -21,7 +22,7 @@ class QrCodeGenerator {
     final randomData = _generateRandomString(10);
 
     // Create QR code object
-    final qrCode = QrCode(4, QrErrorCorrectLevel.L); // Version 4, low error correction
+    final qrCode = QrCode(40, QrErrorCorrectLevel.L); // Version 4, low error correction
     qrCode.addData(randomData);
 
     
@@ -48,12 +49,13 @@ class QrCodeGenerator {
         );
       }
     }
+    debugPrint("You are viable");
 
     // Encode the image as PNG and return the byte array
     return Uint8List.fromList(img.encodePng(qrImage));
   }
 
-  /* Future<String> saveQrImage () {
+   /*Future<String> saveQrImage () {
 
     final generator = QrCodeGenerator();
     final qrImageBytes = generator.generateQrCodeImage(size: 300);
