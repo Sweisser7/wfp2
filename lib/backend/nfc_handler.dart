@@ -22,7 +22,7 @@ class NFCHandler {
         iosAlertMessage: "Scan your tag",
       );
 
-      print(jsonEncode(tag));
+      debugPrint(jsonEncode(tag));
 
       if (tag.type == NFCTagType.iso7816) {
         var result = await FlutterNfcKit.transceive("00B0950000");

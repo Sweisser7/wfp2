@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:wfp2/backend/stampcard.dart';
+import 'package:wfp2/screens/cardemulation_screen.dart';
 //import 'package:wfp2/backend/qrcode_generator.dart';
 import 'package:wfp2/screens/my_qrcode_screen.dart';
 import 'package:wfp2/screens/nfc_readwrite_screen.dart';
@@ -79,6 +80,17 @@ class _MyHomePageState extends State<MyHomePage> {
                 text: "Use NFC",
                 textColor: Colors.white
                 )),
+                InkWell(
+              onTap: () {
+                
+                //Get.to(()=> MyNfcCardScreen(), transition: Transition.fade, duration: Duration(seconds: 1));
+              },
+              child: ButtonWidget(
+                backgroundColor: Colors.black,
+                text: "Activate NFC Card",
+                textColor: Colors.white
+                )),
+            SizedBox(height: 5,),
           ],
 
         ),

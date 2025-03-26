@@ -62,7 +62,7 @@ class _NFCSessionWidgetState extends State<NFCSessionWidget> {
 
 import 'package:flutter/material.dart';
 import 'package:wfp2/backend/nfc_handler.dart';
-import 'package:wfp2/backend/stampcard.dart'; // Replace with the actual file path of your NFCHandler class
+
 
 class NFCSessionWidget extends StatefulWidget {
   const NFCSessionWidget({super.key});
