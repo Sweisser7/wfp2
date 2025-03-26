@@ -1,13 +1,13 @@
-/*import 'package:flutter/material.dart';
-import 'package:wfp2/widgets/card_emulator_widget.dart';
+import 'package:flutter/material.dart';
+import 'package:wfp2/widgets/card_emulation_widget.dart';
 
-class MyNfcCardScreen extends StatelessWidget {
-  const MyNfcCardScreen({super.key});
+class CardEmulationScreen extends StatelessWidget {
+  const CardEmulationScreen({super.key});
   
   final String title = 'My NFC Card';
 
   @override
   Widget build(BuildContext context) {
-    return CardEmulatorWidget();
+    return CardEmulationWidget();
   }
-} */
+} 

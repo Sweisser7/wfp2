@@ -73,17 +73,18 @@ class _MyHomePageState extends State<MyHomePage> {
             SizedBox(height: 5,),
             InkWell(
               onTap: () {
-                Get.to(()=> ReadWriteNFCScreen(), transition: Transition.fade, duration: Duration(seconds: 1));
+                Get.to(()=> NfcReadwriteScreen(), transition: Transition.fade, duration: Duration(seconds: 1));
               },
               child: ButtonWidget(
                 backgroundColor: Colors.black,
                 text: "Use NFC",
                 textColor: Colors.white
                 )),
+                SizedBox(height: 5,),
                 InkWell(
               onTap: () {
                 
-                //Get.to(()=> MyNfcCardScreen(), transition: Transition.fade, duration: Duration(seconds: 1));
+                Get.to(()=> CardEmulationScreen(), transition: Transition.fade, duration: Duration(seconds: 1));
               },
               child: ButtonWidget(
                 backgroundColor: Colors.black,
