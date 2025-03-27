@@ -76,7 +76,18 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-   - assets/
+   - assets/stampcard0.png
+   - assets/stampcard1.png
+   - assets/stampcard2.png
+   - assets/stampcard3.png
+   - assets/stampcard4.png
+   - assets/stampcard5.png
+   - assets/stampcard6.png
+   - assets/stampcard7.png
+   - assets/stampcard8.png
+   - assets/stampcard9.png
+   - assets/stampcard10.png
+
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

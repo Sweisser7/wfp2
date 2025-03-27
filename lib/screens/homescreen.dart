@@ -1,11 +1,7 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:wfp2/backend/stampcard.dart';
 import 'package:wfp2/screens/cardemulation_screen.dart';
-//import 'package:wfp2/backend/qrcode_generator.dart';
-import 'package:wfp2/screens/my_qrcode_screen.dart';
 import 'package:wfp2/screens/nfc_readwrite_screen.dart';
 import 'package:wfp2/screens/stampcardscreen.dart';
 import 'package:wfp2/widgets/button_widgets.dart';
@@ -30,7 +26,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    //final StampCard stampcard = StampCard();
+    
     
     
     return Scaffold(
@@ -61,7 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
             InkWell(
               onTap: () {
                 
-                Get.to(()=> Myqrcodescreen(), transition: Transition.fade, duration: Duration(seconds: 1));
+                //Get.to(()=> Myqrcodescreen(), transition: Transition.fade, duration: Duration(seconds: 1));
               },
               child: ButtonWidget(
                 backgroundColor: Colors.black,

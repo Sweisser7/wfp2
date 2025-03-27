@@ -1,35 +1,67 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:wfp2/backend/stampcard.dart';
-import 'package:wfp2/main.dart';
+// ignore_for_file: must_be_immutable
 
-final stampCardProvider = StateNotifierProvider<StampCard, int>((ref) {
-  return StampCard();
-});
-class StampcardWidget extends ConsumerWidget {
-  const StampcardWidget({super.key});
+import 'dart:typed_data';
+
+import 'package:flutter/material.dart';
+
+import 'package:wfp2/backend/qrcode_api_call.dart';
+import 'package:wfp2/backend/stampcard.dart';
+
+
+class StampcardWidget extends StatelessWidget {
+  bool isLoading = false;
+  var qrCodeApiClient =
+      QrCodeApiClient(apiUrl: 'https://api.qrserver.com/v1/create-qr-code/?');
+
+  StampcardWidget({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final counter = ref.watch(stampCardProvider);
+  Widget build(BuildContext context) {
+    StampCard currentStampCard = StampCard();
 
     return Scaffold(
       appBar: AppBar(title: Text('Stampcard')),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Zähler: $counter', style: TextStyle(fontSize: 24)),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                ref.read(stampCardProvider.notifier).increment(); // Erhöhe den Wert
-              },
-              child: Text('Erhöhen'),
+            Container(
+              width: double.maxFinite,
+              height: 240,
+              padding: const EdgeInsets.only(left: 20, right: 20),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Image.asset(
+                    currentStampCard.chooseStampCard(9),
+                    width: 400.0,
+                    height: 240.0,
+                    fit: BoxFit.contain,
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              width: double.maxFinite,
+              height: 240,
+              padding: const EdgeInsets.only(left: 20, right: 20),
+              child: FutureBuilder<Uint8List?>(
+                future: qrCodeApiClient.fetchByteStream(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Center(child: CircularProgressIndicator());
+                  } else if (snapshot.hasError || snapshot.data == null) {
+                    debugPrint("$snapshot");
+                    return const Center(child: Text('Failed to load QR code'));
+                  } else {
+                    return Center(child: Image.memory(snapshot.data!));
+                  }
+                },
+              ),
             ),
           ],
         ),
       ),
     );
   }
+  
 }

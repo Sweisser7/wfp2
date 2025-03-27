@@ -1,6 +1,6 @@
 
 import 'package:wfp2/backend/nfc_handler.dart';
-import 'package:wfp2/backend/stampcard.dart';
+
 
 
 class NfcSession {
