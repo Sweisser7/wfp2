@@ -30,27 +30,4 @@ class MyApp extends StatelessWidget {
   }
 }
 
-@immutable
-class Task {
-  final int id;
-  final String label;
- 
-
-  Task({required this.id, required this.label});
-
-  Task copyWith({int? id, String? label, bool? completed}) {
-    return Task(
-        id: id ?? this.id,
-        label: label ?? this.label
-        );
-  }
-}
-
-class TaskNotifier extends StateNotifier<List<Task>> {
-  TaskNotifier({tasks}) : super(tasks);
-
-  void add(Task task) {
-    state = [...state, task];
-  }
-}
 

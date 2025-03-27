@@ -54,17 +54,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 textColor: Colors.white
                 )),
             SizedBox(height: 5,),
-            InkWell(
-              onTap: () {
-                
-                //Get.to(()=> Myqrcodescreen(), transition: Transition.fade, duration: Duration(seconds: 1));
-              },
-              child: ButtonWidget(
-                backgroundColor: Colors.black,
-                text: "Generate QR Code",
-                textColor: Colors.white
-                )),
-            SizedBox(height: 5,),
             ButtonWidget(backgroundColor: Colors.black, text: "Scan QR-Code", textColor: Colors.white),
             SizedBox(height: 5,),
             InkWell(

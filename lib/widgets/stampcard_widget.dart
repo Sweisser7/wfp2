@@ -10,14 +10,15 @@ import 'package:wfp2/backend/stampcard.dart';
 
 class StampcardWidget extends StatelessWidget {
   bool isLoading = false;
-  var qrCodeApiClient =
-      QrCodeApiClient(apiUrl: 'https://api.qrserver.com/v1/create-qr-code/?');
+  var qrCodeApiClient = QrCodeApiClient();
+
 
   StampcardWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    StampCard currentStampCard = StampCard();
+    int index = 5;
+    StampCard currentStampCard = StampCard(index);
 
     return Scaffold(
       appBar: AppBar(title: Text('Stampcard')),
@@ -32,7 +33,7 @@ class StampcardWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Image.asset(
-                    currentStampCard.chooseStampCard(9),
+                    currentStampCard.chooseStampCard(index),
                     width: 400.0,
                     height: 240.0,
                     fit: BoxFit.contain,
@@ -54,6 +55,7 @@ class StampcardWidget extends StatelessWidget {
                     return const Center(child: Text('Failed to load QR code'));
                   } else {
                     return Center(child: Image.memory(snapshot.data!));
+                    
                   }
                 },
               ),

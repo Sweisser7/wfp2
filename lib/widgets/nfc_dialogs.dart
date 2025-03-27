@@ -39,4 +39,5 @@ void showResultDialog(BuildContext context, String message) {
       );
     },
   );
+  debugPrint("this is my message: $message");
 }

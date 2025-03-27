@@ -3,7 +3,7 @@
 import 'dart:typed_data';
 import 'package:nfc_host_card_emulation/nfc_host_card_emulation.dart';
 
-NfcState _nfcState = NfcState.enabled;
+NfcState _nfcState = NfcState.disabled;
 
 class NfcService {
   
@@ -34,9 +34,26 @@ class NfcService {
     }
   }
 
+  Future<NfcState> checkDeviceState() async {
+    return await NfcHce.checkDeviceNfcState();
+  }
+  
+
   NfcState get nfcState => _nfcState;
   bool get apduAdded => _apduAdded;
   NfcApduCommand? get nfcApduCommand => _nfcApduCommand;
+
+  Future<NfcState> toggleNfcState (nfcState) async {
+    
+     if (nfcState == NfcState.enabled) {
+      return nfcState = NfcState.disabled;
+    } if (nfcState == NfcState.disabled) {
+      return nfcState = NfcState.enabled;
+    } else {
+        return nfcState;
+    }
+    
+  }
 
   Future<void> toggleApduResponse() async {
     if (_apduAdded) {

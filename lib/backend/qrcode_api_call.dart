@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class QrCodeApiClient {
-  final String apiUrl;
+  
 
-  QrCodeApiClient({required this.apiUrl});
+  String apiUrl = 'https://api.qrserver.com/v1/create-qr-code/?';
 
   Future<Uint8List> fetchQrCode(String data, {int size = 500}) async {
     try {
